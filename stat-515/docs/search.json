@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "source.html",
+    "href": "source.html",
+    "title": "Source Code",
+    "section": "",
+    "text": "library(tidyverse)\n\n# Load thte data from csv\ngold_data &lt;- read_csv(\"data.csv\")\n\n#Filter out N/A and Total records\nreserves &lt;- gold_data %&gt;% \n  filter(\n    !Country == \"World total (rounded)\", \n    !is.na(Reserves)\n  )\n\n#Redesign 1\nggplot(reserves, aes(x = reorder(Country, Reserves), y = Reserves)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(\n    title = \"Gold Reserves by Country\",\n    x = \"Country\",\n    y = \"Reserves (Metric Tons)\"\n  ) +\n  theme_minimal()\n\n#Redesign 2  \nggplot(reserves, aes(area = Reserves, fill = Reserves, label = Country)) +\n  geom_treemap() +\n  geom_treemap_text(colour = \"white\", place = \"centre\", grow = TRUE) +\n  scale_fill_gradient(low = \"darkblue\", high = \"gold\") +\n  labs(title = \"Proportional Share of Global Gold Reserves\")"
+  },
+  {
+    "objectID": "projects/gold-reserves.html",
+    "href": "projects/gold-reserves.html",
+    "title": "Ranked Unmined Gold Reserves by Country",
+    "section": "",
+    "text": "This project is a recreation of the “Unmined Reserves of Gold” infographic, below, using ggplot2. The original shows estimated gold reserves by country in metric tons and USD value. This redesign focuses on clearly stating the message.\n\n\n\nSource image: https://elements.visualcapitalist.com/ranked-unmined-gold-reserves-by-country-2025/"
+  },
+  {
+    "objectID": "projects/gold-reserves.html#overview",
+    "href": "projects/gold-reserves.html#overview",
+    "title": "Ranked Unmined Gold Reserves by Country",
+    "section": "",
+    "text": "This project is a recreation of the “Unmined Reserves of Gold” infographic, below, using ggplot2. The original shows estimated gold reserves by country in metric tons and USD value. This redesign focuses on clearly stating the message.\n\n\n\nSource image: https://elements.visualcapitalist.com/ranked-unmined-gold-reserves-by-country-2025/"
+  },
+  {
+    "objectID": "projects/gold-reserves.html#the-image",
+    "href": "projects/gold-reserves.html#the-image",
+    "title": "Ranked Unmined Gold Reserves by Country",
+    "section": "The image",
+    "text": "The image\nFor this project I drew inspiration from my fiancee Emily’s home office, where she conducts research on economic markets. As a professional economist she frequently works with data-rich visual resources. Among these, one particularly influential source was Elements, a platform dedicated to creating data-driven visuals to bridge the gap between the global trends shaping our future and the raw materials powering them.\n\n\n\nEmily’s home office\n\n\n\nOriginal\nIn the original image, “Ranked: Unmined Gold Reserves by Country”, the graphic presents a detailed comparison of countries’ unmined gold reserves, ranked by estimated weight. The figure reports reserves in metric tons adn also provides an inferred monetary value for these reserves, calculated using a pegged gold price of $4362 per unit.\nThe data source the original image references is credetid to the U.S Geological Survey Janurary 2025. As stated in the reports table of contentx, the section reporting gold is found on page 82 directly after germanium. A table is found on the following page which includes the data used for this project.\n\n\"World Mine Production and Reserves: Reserves for Canada, China, Colombia, Indonesia, Kazakhstan, Peru,\nRussia, and Tanzania were revised based on company and Government reports. \"\n\n[1] \"World Mine Production and Reserves: Reserves for Canada, China, Colombia, Indonesia, Kazakhstan, Peru,\\nRussia, and Tanzania were revised based on company and Government reports. \""
+  },
+  {
+    "objectID": "projects/gold-reserves.html#data-preparation",
+    "href": "projects/gold-reserves.html#data-preparation",
+    "title": "Ranked Unmined Gold Reserves by Country",
+    "section": "Data preparation",
+    "text": "Data preparation\n\n# Prepare the data, create a filtered set of data from the frame above\n\n\n# Create the ggplot image adding layers incrementally\n\n\n# Include sources for the original images and data below"
+  },
+  {
+    "objectID": "projects/gold-reserves.html#source",
+    "href": "projects/gold-reserves.html#source",
+    "title": "Ranked Unmined Gold Reserves by Country",
+    "section": "Source",
+    "text": "Source\n\nData / concept: U.S. Geological Survey, January 2025; value of reserves at gold price $4,362/troy oz.\nOriginal infographic: Visual Capitalist reference image:."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Arya Arun",
+    "section": "",
+    "text": "I am currently a student at George Mason University, where I’m focusing on Business Analytics. A big part of my academic life involves mastering optimization and decision modeling (specifically in OR 531), but I believe in keeping a good balance.\nWhen I’m not diving into spreadsheet models or tweaking my Quarto site, you can usually find me at the gym working out, catching up and hanging out with friends, or getting competitive in Super Smash Bros. on my Switch. I’m always looking for ways to apply the discipline I use in the weight room to the complex data problems I solve in the classroom."
+  },
+  {
+    "objectID": "index.html#hey-im-arya",
+    "href": "index.html#hey-im-arya",
+    "title": "Arya Arun",
+    "section": "",
+    "text": "I am currently a student at George Mason University, where I’m focusing on Business Analytics. A big part of my academic life involves mastering optimization and decision modeling (specifically in OR 531), but I believe in keeping a good balance.\nWhen I’m not diving into spreadsheet models or tweaking my Quarto site, you can usually find me at the gym working out, catching up and hanging out with friends, or getting competitive in Super Smash Bros. on my Switch. I’m always looking for ways to apply the discipline I use in the weight room to the complex data problems I solve in the classroom."
+  },
+  {
+    "objectID": "projects/redesign.html",
+    "href": "projects/redesign.html",
+    "title": "Image Redesign",
+    "section": "",
+    "text": "Introduction\nGlobal gold market dynamics depend on both above-ground stocks and the geographic distribution of unmined reserves. According to the 2025 U.S. Geological Survey (USGS), proven gold reserves total tens of thousands of metric tons, concentrated in a few countries.\nA 2025 Visual Capitalist graphic ranks nations by unmined reserves using USGS data. While visually striking, it limits precise quantitative comparison and analytical use.\nThis project reconstructs the original visualization using the same USGS data, providing descriptive statistics and redesigned R Markdown visualizations for more accurate analysis.\n\n\nImage Selection\nThis image was chosen to analyze the effectiveness of 3D volume-based encoding for univariate data. It provides a case study in how visual scaling (cubes) can potentially exaggerate or obscure the actual numerical differences between observations.\n\n\nOriginal Design\n\n\n\nOriginal 3D Gold Reserves Graphic (source: https://elements.visualcapitalist.com/ranked-unmined-gold-reserves-by-country-2025/)\n\n\nThe graphic suffers from a high “Lie Factor” because it uses 3D cubes to represent 1D data; when a value doubles, the cube’s volume increases by \\(2^3\\) (8 times), visually exaggerating the differences. It lacks a common baseline (like a Y-axis), making direct comparison impossible without reading the labels. Finally, it lacks proportional context, as it does not show how these reserves relate to the total global supply.\n\n\nData and Cleanup\nFor the redesign project, the data source is from [U.S Geological Survey January 2025](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025.pdf/. This has the data represented in the original visualization.\nWhen loading the data file first step is to clean up any errors or incomplete data. In this case we will filter out the “Total Record”.\n\n\n\nRedesign 1:Bar Chart\n\nlibrary(tidyverse)\nlibrary(rsconnect)\n\n# Load thte data from csv\ngold_data &lt;- read_csv(\"data.csv\")\n\n#Filter out N/A and Total records\nreserves &lt;- gold_data %&gt;% \n  filter(\n    !Country == \"World total (rounded)\", \n    !is.na(Reserves)\n  )\n\nggplot(reserves, aes(x = reorder(Country, Reserves), y = Reserves)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  coord_flip() +\n  labs(\n    title = \"Gold Reserves by Country\",\n    x = \"Country\",\n    y = \"Reserves (Metric Tons)\"\n  ) +\n  theme_minimal()\n\n\n\n\n\n\n\n\nWhile the 3D cube infographic is visually striking, it fails as an analytical tool because it prioritizes “chart junk” over data integrity. The primary issue is perceptual distortion: representing data through 3D volume makes it incredibly difficult for the human eye to accurately judge the scale between values, as a cube that is twice as large in volume does not appear twice as large in linear height, leading to a misleading interpretation of the actual gold reserves. Furthermore, the grid layout and decorative elements—like the scale figures and flagpoles—create a low data-to-ink ratio, forcing the viewer to hunt for information rather than allowing for the immediate, horizontal comparison provided by a bar chart. A standard bar chart would eliminate this cognitive load by using a single common baseline and linear length, allowing an analyst to instantly rank countries and quantify the exact gaps between them without the distraction of perspective or artistic flair. ### Redesign 2: Proportional Analysis\n\n# Redesign 2 - Proportional Analysis\nlibrary(treemapify)\n\nggplot(reserves, aes(area = Reserves, fill = Reserves, label = Country)) +\n  geom_treemap() +\n  geom_treemap_text(colour = \"white\", place = \"centre\", grow = TRUE) +\n  scale_fill_gradient(low = \"darkblue\", high = \"gold\") +\n  labs(title = \"Proportional Share of Global Gold Reserves\")\n\n\n\n\n\n\n\n\nWhile the first redesign (bar chart) allowed for precise ranking, this Treemap provides the ‘part-to-whole’ context that was missing in the original image. By using 2D area encoding, we eliminate the ‘Lie Factor’ found in the original 3D cubes. In this view, it is immediately clear that most of the total unmined gold is concentrated in the top two countries (Russia and Australia), which together account for the rest of the world.\n\n\nConclusion\nThis project successfully transformed a visually decorative infographic into an analytically accurate statistical report. By removing the 3D “Lie Factor” and implementing a common baseline through a bar chart and a tree map, the data now adheres to Tufte’s principles of graphical integrity. The result is a clearer, more honest representation of global gold reserves."
+  }
+]

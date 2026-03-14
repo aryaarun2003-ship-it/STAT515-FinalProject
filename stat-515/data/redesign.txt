@@ -1,0 +1,80 @@
+---
+title: "Image Redesign"
+author: "Arya Arun"
+editor: visual
+---
+
+Introduction
+
+Global gold market dynamics depend on both above-ground stocks and the geographic distribution of unmined reserves. According to the 2025 U.S. Geological Survey (USGS), proven gold reserves total tens of thousands of metric tons, concentrated in a few countries.
+
+A 2025 Visual Capitalist graphic ranks nations by unmined reserves using USGS data. While visually striking, it limits precise quantitative comparison and analytical use.
+
+This project reconstructs the original visualization using the same USGS data, providing descriptive statistics and redesigned R Markdown visualizations for more accurate analysis.
+
+Image Selection
+
+This image was chosen to analyze the effectiveness of 3D volume-based encoding for univariate data. It provides a case study in how visual scaling (cubes) can potentially exaggerate or obscure the actual numerical differences between observations.
+
+Original Design
+
+Original 3D Gold Reserves Graphic (source: https://elements.visualcapitalist.com/ranked-unmined-gold-reserves-by-country-2025/)
+
+The graphic suffers from a high "Lie Factor" because it uses 3D cubes to represent 1D data; when a value doubles, the cube's volume increases by $2^3$ (8 times), visually exaggerating the differences. It lacks a common baseline (like a Y-axis), making direct comparison impossible without reading the labels. Finally, it lacks proportional context, as it does not show how these reserves relate to the total global supply.
+
+Data and Cleanup
+
+For the redesign project, the data source is from [U.S Geological Survey January 2025](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025.pdf/. This has the data represented in the original visualization.
+
+When loading the data file first step is to clean up any errors or incomplete data. In this case we will filter out the "Total Record".
+
+
+
+
+Redesign 1:Bar Chart
+
+{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+
+# Load thte data from csv
+gold_data <- read_csv("data.csv")
+
+#Filter out N/A and Total records
+reserves <- gold_data %>% 
+  filter(
+    !Country == "World total (rounded)", 
+    !is.na(Reserves)
+  )
+
+ggplot(reserves, aes(x = reorder(Country, Reserves), y = Reserves)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  coord_flip() +
+  labs(
+    title = "Gold Reserves by Country",
+    x = "Country",
+    y = "Reserves (Metric Tons)"
+  ) +
+  theme_minimal()
+
+
+Describe benefits of the bar chart - While the first redesign (bar chart) allowed for precise ranking, this Treemap provides the 'part-to-whole' context that was missing in the original image. By using 2D area encoding, we eliminate the 'Lie Factor' found in the original 3D cubes. In this view, it is immediately clear that most of the total unmined gold is concentrated in the top two countries (Russia and Australia), which together account for the rest of the world.
+
+Redesign 2: Proportional Analysis
+
+{r}
+# Redesign 2 - Proportional Analysis
+library(treemapify)
+
+ggplot(reserves, aes(area = Reserves, fill = Reserves, label = Country)) +
+  geom_treemap() +
+  geom_treemap_text(colour = "white", place = "centre", grow = TRUE) +
+  scale_fill_gradient(low = "darkblue", high = "gold") +
+  labs(title = "Proportional Share of Global Gold Reserves")
+
+While the first redesign (bar chart) allowed for precise ranking, this Treemap provides the 'part-to-whole' context that was missing in the original image. By using 2D area encoding, we eliminate the 'Lie Factor' found in the original 3D cubes. In this view, it is immediately clear that most of the total unmined gold is concentrated in the top two countries (Russia and Australia), which together account for the rest of the world.
+
+Conclusion
+
+This project successfully transformed a visually decorative infographic into an analytically accurate statistical report. By removing the 3D "Lie Factor" and implementing a common baseline through a bar chart and a tree map, the data now adheres to Tufte’s principles of graphical integrity. The result is a clearer, more honest representation of global gold reserves.
