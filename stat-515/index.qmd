@@ -1,0 +1,19 @@
+---
+title: "Arya Arun"
+image: c59741b9-e150-4271-8452-b10528d3ba21_Original.jpg
+about:
+  template: trestles
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/aryasarun
+    - icon: github
+      text: Github
+      href: https://github.com/aryaarun2003
+---
+
+## Hey, I'm Arya!
+
+I am currently a student at George Mason University, where I'm focusing on **Business Analytics**. A big part of my academic life involves mastering optimization and decision modeling (specifically in **OR 531**), but I believe in keeping a good balance.
+
+When I’m not diving into spreadsheet models or tweaking my Quarto site, you can usually find me at the gym **working out**, catching up and **hanging out with friends**, or getting competitive in **Super Smash Bros.** on my Switch. I’m always looking for ways to apply the discipline I use in the weight room to the complex data problems I solve in the classroom.

@@ -1,0 +1,36 @@
+---
+title: "Source Code"
+format: html
+---
+
+``` r
+library(tidyverse)
+
+# Load thte data from csv
+gold_data <- read_csv("data.csv")
+
+#Filter out N/A and Total records
+reserves <- gold_data %>% 
+  filter(
+    !Country == "World total (rounded)", 
+    !is.na(Reserves)
+  )
+
+#Redesign 1
+ggplot(reserves, aes(x = reorder(Country, Reserves), y = Reserves)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  coord_flip() +
+  labs(
+    title = "Gold Reserves by Country",
+    x = "Country",
+    y = "Reserves (Metric Tons)"
+  ) +
+  theme_minimal()
+
+#Redesign 2  
+ggplot(reserves, aes(area = Reserves, fill = Reserves, label = Country)) +
+  geom_treemap() +
+  geom_treemap_text(colour = "white", place = "centre", grow = TRUE) +
+  scale_fill_gradient(low = "darkblue", high = "gold") +
+  labs(title = "Proportional Share of Global Gold Reserves")
+```

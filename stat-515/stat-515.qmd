@@ -1,0 +1,10 @@
+---
+title: "Statistics"
+image: images/pexels-pixabay-258160.jpg
+about: 
+  id: Statistics-515
+  template: jolla
+  image-shape: rounded
+  image-width: 15em
+
+---

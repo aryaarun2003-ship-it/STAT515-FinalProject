@@ -1,0 +1,71 @@
+/* Custom Theme for STAT-515 */
+
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* Navbar styling */
+.navbar {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Main content area */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #34495e;
+  margin-top: 25px;
+}
+
+/* Card-like styling for sections */
+.card {
+  background: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+/* Link styling */
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #e74c3c;
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: #2c3e50;
+  color: white;
+  padding: 20px;
+  margin-top: 40px;
+  text-align: center;
+}

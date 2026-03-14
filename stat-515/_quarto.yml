@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "STAT-515 Projects"
+  navbar:
+    logo: "logo.png"
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Projects
+        menu:
+          - href: projects\redesign.qmd
+            text: Gold Reserves (ggplot2 Redesign)
+      - text: Video
+        href: video.qmd
+      - text: Source
+        href: source.qmd
+format:
+  html:
+    theme:
+      - journal
+    css: styles.css
+    toc: true
+
+
+

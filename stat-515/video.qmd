@@ -1,0 +1,6 @@
+---
+title: "Project Video"
+---
+{{< video videos\Stats515Project.mp4 
+    width="800" height="600"
+    >}}
